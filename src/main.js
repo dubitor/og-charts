@@ -1,5 +1,3 @@
-import ApexCharts from 'apexcharts'
-
 class RevenueAllocationTool {
         constructor() {
                 const viewportMeta = document.createElement('meta');

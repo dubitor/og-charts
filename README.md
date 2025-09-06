@@ -35,3 +35,14 @@ yarn run build
 Creates a `dist/index.html` file with HTML, Javascript and CSS combined into a single file.
 
 For easy upload to a website hoster tool.
+
+
+## Adding dependencies
+
+Squarespace has a max file size of 400KB for code blocks.
+
+To keep build artefact size down, then, dependencies should be downloaded at runtime via a CDN `<script>` tag instead of included in the bundle (via `import` statements in JS files).
+
+Still install third-party libraries as development dependencies to benefit from IDE tooling.
+
+e.g. `yarn add <some-library> --dev`
