@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "apexcharts": "^5.3.4",
     "vite": "^7.1.2",
     "vite-plugin-singlefile": "^2.3.0"
   }
