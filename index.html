@@ -1,13 +1,78 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<title>EU ETS Aviation Revenue Allocation</title>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
+		rel="stylesheet">
+	<link href="src/style.css" rel="stylesheet">
+</head>
+
+<body>
+	<div id="aviation-calculator-app">
+		<div class="container">
+			<div class="tool-header">
+				<div class="tool-title">
+					<h1>EU aviation climate cost calculator</h1>
+				</div>
+				<div class="tool-description">
+					<p>The aviation sector has long enjoyed a regulatory framework that does not
+						fully account for its climate impact.
+						<br><br>Use this tool to see the cost to European climate action of
+						giving aviation a free pass.
+					</p>
+				</div>
+				<div class="title-buttons">
+					<span class="instructions-btn" data-category="instructions">Instructions</span>
+					<span class="methodology-btn" data-category="methodology">Methodology</span>
+					<span class="report-btn" data-category="full-report">Read EU ETS aviation policy
+						guide</span>
+				</div>
+			</div>
+
+			<div class="main-content">
+				<div class="left-panel">
+					<!-- CHECKBOXES -->
+					<div class="checkbox-section">
+						<span class="checkbox-title">Revenue sources</span>
+					</div>
+					<!-- SLIDERS -->
+					<div class="slider-section">
+						<span class="slider-title">Revenue allocation</span>
+					</div>
+				</div>
+
+				<div class="center-panel">
+					<div class="total-amount">
+						<p id="total-amount">€0bn</p>
+						<p id="dataset-text">Total available revenue (2012 — 2023)</p>
+					</div>
+					<div class="chart-container">
+						<div id="chart"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal -->
+		<div class="modal-overlay" id="modal-overlay">
+			<div class="modal">
+				<div class="modal-header">
+					<div class="modal-title" id="modal-title">Category Title</div>
+					<button class="modal-close" id="modal-close">×</button>
+				</div>
+				<div class="modal-content" id="modal-content">
+					<p>Content for this category will go here... </p>
+				</div>
+				<div class="modal-footer" id="modal-footer">
+					<p>Footer for this category will go here...</p>
+				</div>
+			</div>
+		</div>
+
+		<script type="module" src="src/main.js"></script>
+</body>
+
 </html>
