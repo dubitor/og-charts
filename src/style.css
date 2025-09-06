@@ -1,96 +1,1240 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+#aviation-calculator-app {
+	line-height: normal !important;
+	font-family: "DM Sans", sans-serif !important;
+	margin: 0 !important;
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+	--ekerosene-color: #1c3b38;
+	--national-color: #fa6e47;
+	--climate-color: #4fab70;
+	--track-color: #ddd;
+	--chart-width: 100%;
+	--chart-height: 550px;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+	font-family: 'DM Sans', sans-serif;
+	background: white;
+	min-height: 100vh;
+	width: 100%;
+	margin: 0 !important;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+section[data-section-id="6830a1c82efcee6c9e06969b"] .sqs-block-code h1,
+section[data-section-id="6830a1c82efcee6c9e06969b"] .sqs-block-code h2,
+section[data-section-id="6830a1c82efcee6c9e06969b"] .sqs-block-code h3 {
+	all: unset !important;
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+ol {
+	margin-top: 10px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
+ul li {
+	margin-bottom: 20px;
+	list-style-type: disc;
+	list-style-position: outside;
+	margin-left: 30px;
 }
 
-.card {
-  padding: 2em;
+ol li {
+	list-style-type: decimal;
 }
 
-.read-the-docs {
-  color: #888;
+.tutorial-content ol li {
+	list-style-type: decimal;
+	list-style-position: outside;
+	margin-left: 15px;
+	margin-bottom: 20px;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.tutorial-content ol li::marker {
+	color: var(--climate-color);
+	font-weight: 600;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.tutorial-content ol li ul li {
+	margin-bottom: 10px;
+	list-style-type: disc;
+	list-style-position: outside;
+	margin-left: 30px;
+}
+
+.tutorial-content ol li ul li::marker {
+	color: var(--national-color);
+}
+
+.container {
+	width: 100%;
+	margin: 0 auto;
+	background: white;
+	overflow: hidden;
+}
+
+.tool-header {
+	background: #1c3b38;
+	color: #fae8d9;
+	padding: 20px;
+	text-align: center;
+	position: relative;
+	display: grid;
+	grid-template-columns: 120px 1fr 120px;
+	grid-template-rows: fit-content fit-content;
+	width: 100%;
+}
+
+.tool-title {
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* Place in cell 2 (top row, middle column) */
+	grid-column: 2;
+	grid-row: 1;
+	margin: 0 0 10px 0;
+}
+
+.tool-title h1 {
+	font-size: 35px !important;
+	font-weight: 600 !important;
+}
+
+.tool-description {
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	grid-column: 2;
+	grid-row: 2;
+	padding: 0 10px;
+}
+
+.tool-description p {
+	font-size: 18px !important;
+	opacity: 0.9;
+	line-height: 20px;
+}
+
+#aviation-calculator-app>div.container>div.tool-header>div.tool-description>p.preFade.fadeIn {
+	margin: 0 !important;
+}
+
+.title-buttons {
+	background-color: #1c3b38;
+	bottom: 0;
+	right: 15px;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: end;
+	/* Place in cell 6 (bottom row, right column) */
+	grid-column: 3;
+	grid-row: 2;
+	gap: 14px;
+	/* Align to right side of grid */
+}
+
+.report-btn {
+	grid-column: 3;
+	grid-row: 1;
+}
+
+/* Shared styling for both buttons */
+.instructions-btn,
+.methodology-btn,
+.report-btn {
+	background: transparent;
+	color: white;
+	border: 1px solid var(--climate-color) !important;
+	padding: 5px 12px;
+	border-radius: 5px;
+	font-size: 13px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	text-align: center;
+	min-width: 120px;
+	white-space: nowrap;
+}
+
+.instructions-btn:hover,
+.methodology-btn:hover,
+.report-btn:hover {
+	background: #3d8a5a;
+	/* Darker shade of climate color */
+	color: white;
+	transform: translateY(-1px);
+}
+
+.main-content {
+	display: flex;
+	padding-top: 15px;
+	padding-right: 20px;
+	padding-left: 20px;
+	gap: 30px;
+}
+
+.left-panel {
+	flex: 1;
+	background: #fae8d9;
+	padding: 5px;
+	border-radius: 15px;
+	margin-bottom: 30px;
+}
+
+.dataset-toggle-section {
+	position: relative;
+	padding: 15px;
+	border-radius: 8px;
+	background: #fae8d9;
+}
+
+.toggle-title {
+	color: #1c3b38;
+	margin-bottom: 15px;
+	font-size: 18px;
+	font-weight: 600;
+	display: flex;
+	/* Change from block to flex */
+	justify-content: space-between;
+	/* Spread title and icon apart */
+	align-items: center;
+	/* Vertically align them */
+}
+
+.toggle-title .info-icon {
+	margin-left: 0;
+	transform: translateX(-5px);
+	/* Adjust position to align with title */
+}
+
+.toggle-container {
+	display: flex;
+	width: 100%;
+	background-color: #f5f5f5;
+	border-radius: 8px;
+	padding: 2px;
+	border: 1px solid #e0e0e0;
+}
+
+.tutorial-modal .toggle-container {
+	transform: scale(0.6, 0.6);
+}
+
+.toggle-btn {
+	flex: 1;
+	width: 100%;
+	padding: 8px 8px;
+	border: none;
+	border-radius: 8px;
+	background-color: transparent;
+	color: #666;
+	font-size: 14px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.toggle-btn:hover {
+	background-color: #e8e8e8;
+}
+
+.toggle-btn.active {
+	background-color: #fa6e47;
+	color: white;
+	box-shadow: 0 2px 4px rgba(250, 110, 71, 0.3);
+}
+
+.checkbox-section {
+	position: relative;
+	padding: 15px;
+	border-radius: 8px;
+	background: #fae8d9;
+}
+
+.checkbox-title {
+	color: #1c3b38;
+	margin-bottom: 15px;
+	font-size: 18px;
+	font-weight: 600;
+	display: block;
+}
+
+.checkbox-item {
+	display: flex;
+	background-color: #fae8d9;
+	align-items: center;
+	padding: 5px;
+	border-radius: 8px;
+	transition: background-color 0.3s ease;
+}
+
+.checkbox-item .checkbox-label-wrapper {
+	display: flex;
+	align-items: center;
+	margin-right: auto;
+	/* This pushes value/icon to the right */
+	padding: 5px;
+	border-radius: 8px;
+	transition: background-color 0.3s ease;
+}
+
+.checkbox-item .checkbox-label-wrapper:hover {
+	background: rgba(250, 110, 71, 0.1);
+}
+
+.checkbox-item input[type="checkbox"] {
+	width: 20px;
+	height: 20px;
+	min-width: 20px;
+	min-height: 20px;
+	margin-right: 12px;
+	cursor: pointer;
+	accent-color: #fa6e47;
+}
+
+.checkbox-item label {
+	cursor: pointer;
+	margin-right: auto;
+	/* This pushes value/icon to the right */
+	font-weight: 500;
+	color: #1c3b38;
+	font-size: 13px;
+}
+
+.checkbox-item .revenue-value {
+	color: #1c3b38;
+	font-size: 14px;
+	font-weight: normal;
+	margin-right: 8px;
+	opacity: 0.3;
+	transition: opacity 0.3s ease;
+	/* Smooth transition */
+}
+
+.checkbox-item .revenue-value.checked {
+	opacity: 1;
+}
+
+.checkbox-item.disabled {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+.checkbox-item.disabled label {
+	color: #999;
+	cursor: not-allowed;
+}
+
+.checkbox-item.disabled .revenue-value {
+	color: #999;
+}
+
+.checkbox-item.disabled .info-icon {
+	background-color: #ccc;
+	cursor: not-allowed;
+}
+
+.checkbox-section::before {
+	/*why no work? ACTION*/
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 20px;
+	/* Control line start position */
+	right: 20px;
+	/* Control line end position */
+	height: 2px;
+	background: #1c3b38;
+}
+
+.center-panel {
+	flex: 3;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 50px;
+	padding-right: 20px;
+}
+
+.total-amount {
+	text-align: center;
+}
+
+#total-amount {
+	color: black;
+	font-size: 25px !important;
+	margin-bottom: 5px;
+	margin-top: 0;
+}
+
+.total-amount p {
+	color: black;
+	font-size: 17px !important;
+	opacity: 0.7;
+	margin: 0;
+}
+
+.chart-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	position: relative;
+	justify-content: center;
+	align-items: center;
+	overflow: visible;
+}
+
+#chart {
+	position: relative;
+	min-height: 320px;
+	width: 100%;
+	max-width: 100%;
+	border-radius: 8px;
+	overflow: visible;
+	background: white;
+	margin-right: 55px;
+	right: 0;
+}
+
+.custom-annotation-line {
+	pointer-events: none;
+	z-index: 1;
+}
+
+.apexcharts-series {
+	z-index: 2;
+}
+
+.slider-section {
+	position: relative;
+	padding: 15px 15px 5px 15px;
+	background: #fae8d9;
+	border-radius: 8px;
+	z-index: 7;
+}
+
+.slider-section::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 20px;
+	/* Control line start position */
+	right: 20px;
+	/* Control line end position */
+	height: 2px;
+	background: #1c3b38;
+	z-index: 8;
+}
+
+.slider-title {
+	color: #1c3b38;
+	margin-bottom: 15px;
+	font-size: 18px;
+	font-weight: 600;
+	display: block;
+}
+
+.slider-item {
+	margin-bottom: 15px;
+	border-radius: 10px;
+	background: #fae8d9;
+	padding: 4px;
+}
+
+.slider-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.slider-label {
+	font-weight: 500;
+	color: #1c3b38;
+	font-size: 14px;
+}
+
+.lock-btn {
+	background: transparent !important;
+	border: none;
+	cursor: pointer;
+	transition: all 0.3s;
+	order: 1;
+	transform: translateX(5px);
+	padding: 0;
+	/* Padding for hover area */
+	border-radius: 5px;
+}
+
+.lock-icon {
+	width: 35px;
+	height: 35px;
+	transition: all 0.3s;
+	display: block;
+	pointer-events: none;
+}
+
+.lock-btn:hover {
+	background: rgba(250, 110, 71, 0.1) !important;
+}
+
+.lock-btn:hover .lock-icon {
+	opacity: 0.8;
+	transform: scale(1.1);
+}
+
+.lock-btn:active {
+	transform: translateX(5px) scale(0.9);
+	background: rgba(250, 110, 71, 0.3) !important;
+}
+
+.lock-btn:active .lock-icon {
+	transform: scale(0.98);
+}
+
+.lock-btn.locked {
+	background: rgba(250, 110, 71, 0.2) !important;
+	/* Use rgba for consistency */
+}
+
+.slider-container {
+	position: relative;
+	margin-bottom: 1px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.slider-header .info-icon {
+	transform: translateX(-5px);
+}
+
+.slider {
+	--value: 50%;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 100%;
+	height: 8px;
+	border-radius: 5px;
+	outline: none;
+	transition: all 0.3s;
+	cursor: pointer;
+	background: var(--track-color);
+	/* Base background for all sliders */
+	flex: 1;
+}
+
+.slider:hover {
+	height: 10px;
+	filter: brightness(1.05);
+}
+
+/* Active/pressed state for slider track */
+.slider:active {
+	height: 12px;
+	filter: brightness(0.95);
+}
+
+.slider:disabled {
+	cursor: not-allowed;
+	opacity: 0.5;
+}
+
+/* Climate slider styling */
+.slider-climate {
+	background: linear-gradient(to right,
+			var(--climate-color) 0%,
+			var(--climate-color) var(--value),
+			var(--track-color) var(--value),
+			var(--track-color) 100%);
+}
+
+.slider-climate::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	cursor: pointer;
+	transition: all 0.3s;
+	background: var(--climate-color);
+}
+
+/* National slider styling */
+.slider-national {
+	background: linear-gradient(to right,
+			var(--national-color) 0%,
+			var(--national-color) var(--value),
+			var(--track-color) var(--value),
+			var(--track-color) 100%);
+}
+
+.slider-national::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	cursor: pointer;
+	transition: all 0.3s;
+	background: var(--national-color);
+	/* Use CSS variable */
+}
+
+/* E-kerosene slider styling */
+.slider-ekerosene {
+	background: linear-gradient(to right,
+			var(--ekerosene-color) 0%,
+			var(--ekerosene-color) var(--value),
+			var(--track-color) var(--value),
+			var(--track-color) 100%);
+}
+
+.slider-ekerosene::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	cursor: pointer;
+	transition: all 0.3s;
+	background: var(--ekerosene-color);
+	/* Use CSS variable */
+}
+
+/* Disabled state */
+.slider:disabled::-webkit-slider-thumb {
+	cursor: not-allowed;
+}
+
+/* Hover effects */
+.slider::-webkit-slider-thumb:hover {
+	transform: scale(1.2);
+}
+
+.slider:disabled::-webkit-slider-thumb:hover {
+	transform: none;
+}
+
+/* Firefox styling */
+.slider::-moz-range-thumb {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	cursor: pointer;
+	border: none;
+	background: var(--track-color);
+	/* Default */
+}
+
+.slider-climate::-moz-range-thumb {
+	background: var(--climate-color);
+}
+
+.slider-national::-moz-range-thumb {
+	background: var(--national-color);
+}
+
+.slider-ekerosene::-moz-range-thumb {
+	background: var(--ekerosene-color);
+}
+
+/* Firefox progress fill */
+.slider-climate::-moz-range-progress {
+	background: var(--climate-color);
+	height: 8px;
+	border-radius: 5px;
+}
+
+.slider-national::-moz-range-progress {
+	background: var(--national-color);
+	height: 8px;
+	border-radius: 5px;
+}
+
+.slider-ekerosene::-moz-range-progress {
+	background: var(--ekerosene-color);
+	height: 8px;
+	border-radius: 5px;
+}
+
+.slider-value {
+	display: flex;
+	justify-content: space-between;
+	color: #1c3b38;
+	font-size: 14px;
+	opacity: 0.8;
+}
+
+.value-amount {
+	font-weight: bold;
+	color: #1c3b38;
+}
+
+.modal-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 11;
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+	opacity: 1;
+	visibility: visible;
+}
+
+.modal {
+	background: #1c3b38;
+	color: white;
+	border-radius: 15px;
+	padding: 40px;
+	max-width: 900px;
+	width: 90%;
+	height: auto;
+	max-height: 70%;
+	overflow-y: auto;
+	position: relative;
+	transform: scale(0.8);
+	transition: transform 0.3s ease;
+	z-index: 9 !important;
+}
+
+.modal a {
+	color: #4fab70;
+	transition: color 0.3s ease;
+}
+
+.modal a:hover {
+	text-decoration: underline;
+	color: #75cd95;
+}
+
+.modal-overlay.active .modal {
+	transform: scale(1);
+}
+
+.modal-header {
+	margin-bottom: 20px;
+	padding-bottom: 15px;
+	border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-title {
+	font-size: 22px;
+	font-weight: 700;
+	color: white;
+	margin-right: 5px 10px 15px 0;
+}
+
+.modal-close {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	background: none;
+	border: none;
+	font-size: 20px;
+	cursor: pointer;
+	padding: 5px;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background-color 0.3s ease;
+	color: white;
+	z-index: 9;
+}
+
+.modal-close:hover {
+	background: rgba(255, 255, 255, 0.1);
+}
+
+.modal-content {
+	color: white;
+	font-size: 17px;
+	line-height: 1.6;
+	margin-top: 15px;
+	padding-bottom: 10px;
+}
+
+.modal-footer {
+	color: white;
+	font-size: 15px;
+	font-style: italic;
+	bottom: 0;
+	left: 0 !important;
+	background: #1c3b38;
+	/* Match modal background to prevent overlap issues */
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+.info-icon {
+	display: inline-flex;
+	/* Change from inline-block */
+	align-items: center;
+	/* Vertical centering */
+	justify-content: center;
+	/* Horizontal centering */
+	min-width: 16px;
+	background-color: #fa6e47;
+	color: white;
+	border-radius: 50%;
+	border: solid 0.5px #1c3b38;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 1;
+	/* Remove extra line spacing */
+	cursor: pointer;
+	margin-left: 5px;
+	transition: all 0.3s ease;
+}
+
+.info-icon:hover {
+	background-color: #4fab70;
+}
+
+.tutorial-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 13;
+	margin-bottom: 0;
+	/* This will be dynamically updated with mask */
+}
+
+.tutorial-modal {
+	position: fixed;
+	background: var(--ekerosene-color);
+	max-width: 50%;
+	min-width: 300px;
+	max-height: 90%;
+	color: white;
+	border-radius: 8px;
+	padding: 20px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+	z-index: 90;
+	margin: 10px;
+	overflow-y: auto;
+}
+
+.tutorial-modal a {
+	color: #4fab70;
+	transition: color 0.3s ease;
+}
+
+.tutorial-modal a:hover {
+	text-decoration: underline;
+	color: #75cd95;
+}
+
+.tutorial-step-counter {
+	position: absolute;
+	top: 10px;
+	right: 15px;
+	font-size: 1em;
+	color: #4fab70;
+	font-weight: bold;
+}
+
+.tutorial-modal .modal-header {
+	margin-bottom: 20px;
+	padding-bottom: 15px;
+	border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.tutorial-modal .modal-title {
+	color: var(--national-color);
+	font-size: 25px;
+	margin: 0;
+}
+
+.tutorial-modal p {
+	margin-bottom: 20px;
+}
+
+.mobile-tutorial-modal {
+	position: fixed;
+	height: auto !important;
+	background: var(--ekerosene-color);
+	width: 95% !important;
+	max-height: 95% !important;
+	color: white;
+	border-radius: 8px;
+	padding: 15px 15px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+	z-index: 1100 !important;
+	margin: auto 0 !important;
+	margin-bottom: 5px !important;
+	transform: translateY(-70px);
+	overflow-y: auto;
+}
+
+.mobile-tutorial-modal .mobile-tutorial-wrapper {
+	max-height: 65vh;
+	overflow-y: auto;
+}
+
+.mobile-tutorial-wrapper .modal-title {
+	color: var(--national-color);
+	font-size: 18px;
+}
+
+.mobile-tutorial-modal .tutorial-content p,
+.mobile-tutorial-modal .tutorial-content li {
+	font-size: 12px;
+}
+
+.mobile-tutorial-modal .tutorial-content h4 {
+	font-size: 13px;
+	color: var(--climate-color);
+	margin-bottom: 10px;
+}
+
+.mobile-tutorial-footer {
+	margin-top: -5px;
+	font-size: 12px;
+}
+
+.mobile-tutorial-footer a {
+	color: #4fab70;
+	transition: color 0.3s ease;
+}
+
+.tutorial-buttons {
+	display: flex;
+	justify-content: flex-end;
+	gap: 10px;
+	padding: 20px 0 0 0;
+	margin-top: 10px;
+}
+
+/* Base button styles */
+.tutorial-buttons button {
+	padding: 10px 20px;
+	border: none;
+	border-radius: 6px;
+	font-size: 14px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	min-width: 80px;
+}
+
+/* Back button - subtle style */
+.tutorial-back {
+	background: transparent;
+	color: white;
+	border: 1px solid var(--climate-color) !important;
+}
+
+.tutorial-back:hover {
+	background: #3d8a5a;
+	/* Darker shade of climate color */
+	transform: translateY(-1px);
+}
+
+/* Next button - primary action */
+.tutorial-next {
+	background: transparent;
+	color: white;
+	border: 1px solid var(--climate-color) !important;
+}
+
+.tutorial-next:hover {
+	background: #3d8a5a;
+	/* Darker shade of climate color */
+	transform: translateY(-1px);
+}
+
+/* Finish button - success action */
+.tutorial-finish {
+	background: transparent;
+	color: white;
+	border: 1px solid var(--climate-color) !important;
+}
+
+.tutorial-finish:hover {
+	background: #3d8a5a;
+	transform: translateY(-1px);
+}
+
+/* Skip button - secondary action */
+.tutorial-skip {
+	background: transparent;
+	color: white;
+	border: 1px solid var(--climate-color) !important;
+}
+
+.tutorial-skip:hover {
+	background: #3d8a5a;
+	/* Darker shade of climate color */
+	transform: translateY(-1px);
+}
+
+.mobile-tutorial-wrapper .tutorial-buttons {
+	font-size: 10px !important;
+}
+
+.tutorial-demo-controls {
+	transform: scale(0.8);
+	transform-origin: center top;
+	/* Changed from left top */
+	margin: 10px auto;
+	/* auto margins for horizontal centering */
+	display: flex;
+	justify-content: center;
+	/* Centers the content inside */
+	width: fit-content;
+	/* Shrinks wrapper to content size */
+}
+
+/* Prevent demo controls from interfering with real ones */
+.tutorial-demo-controls * {
+	pointer-events: none;
+	/* Make them non-interactive */
+}
+
+.tutorial-demo-controls .slider {
+	background: linear-gradient(to right, var(--climate-color) 33.3%, var(--track-color) 33.3%);
+}
+
+/* Hide bar borders by default */
+#chart .apexcharts-bar-area {
+	stroke: transparent !important;
+	stroke-width: 0 !important;
+}
+
+/* Show bar borders when revenue exists */
+#chart.show-borders .apexcharts-bar-area {
+	stroke: #000000 !important;
+	stroke-width: 1.5 !important;
+}
+
+#chart:not(.show-borders) .apexcharts-bar-area {
+	fill: transparent !important;
+}
+
+/* Ensure annotation lines are not affected */
+#chart .apexcharts-annotations .apexcharts-xaxis-annotation-line,
+#chart .apexcharts-annotations .apexcharts-yaxis-annotation-line {
+	stroke: your-annotation-color !important;
+	stroke-width: your-annotation-width !important;
+}
+
+@media (max-width: 768px) {
+	.fe-6830a1c82efcee6c9e06969a {
+		--grid-gutter: 0px !important;
+		--sqs-mobile-site-gutter: 0px !important;
+		grid-template-columns: 1fr !important;
+		column-gap: 0 !important;
+		padding: 0 !important;
+		margin: 0 !important;
+		margin-left: -1px !important;
+		/* Push 1px left to cover border */
+		width: calc(100% + 2px) !important;
+		/* Extend width to cover both sides */
+	}
+
+	.fe-block-a113399ecca0353bb85a {
+		grid-area: 1/1/-1/-1 !important;
+		/* Fill entire grid */
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+
+	.fe-block-a113399ecca0353bb85a .sqs-block {
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+
+	.fe-block-a113399ecca0353bb85a .sqs-block-content {
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+
+	.fe-6830a1c82efcee6c9e06969a .fe-block-a113399ecca0353bb85a,
+	#block-a113399ecca0353bb85a,
+	#block-a113399ecca0353bb85a .sqs-block-content {
+		left: 0 !important;
+		right: 0 !important;
+		position: relative !important;
+		width: 100% !important;
+	}
+
+	.checkbox-title,
+	.slider-title,
+	.toggle-title {
+		font-size: 14px !important;
+	}
+
+	.toggle-btn,
+	.checkbox-label-wrapper label,
+	.checkbox-label-wrapper .revenue-value,
+	.slider-item .slider-label,
+	.slider-item .slider-value,
+	.tutorial-btn {
+		font-size: 12px !important;
+	}
+
+	body {
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+
+	.main-content {
+		flex-direction: column;
+		padding: 10px;
+		margin: 5px !important;
+	}
+
+	.main-content p {
+		font-size: 12px !important
+	}
+
+	.left-panel {
+		max-width: none;
+	}
+
+	#chart {
+		width: 100%;
+		max-width: 400px;
+	}
+
+	.tool-header {
+		grid-template-columns: 1fr;
+		grid-template-rows: auto auto auto;
+		height: auto;
+		width: 100vw;
+		margin-left: calc(-50vw + 50% -1px);
+		/* Center the full-width element */
+		padding: 20px 10px;
+		/* Add padding to prevent text from hitting edges */
+		box-sizing: border-box;
+	}
+
+	.tool-title {
+		grid-column: 1;
+		grid-row: 1;
+	}
+
+	.tool-title h1 {
+		font-size: 18px !important;
+		font-weight: 600 !important;
+		word-wrap: wrap;
+		overflow-wrap: break-word;
+		hyphens: auto;
+	}
+
+	.tool-description {
+		grid-column: 1;
+		grid-row: 2;
+		padding: 0 10px;
+	}
+
+	.tool-description p {
+		font-size: 14px !important;
+		line-height: normal;
+		word-wrap: wrap;
+		overflow-wrap: break-word;
+		hyphens: auto;
+	}
+
+	.title-buttons {
+		grid-column: 1;
+		grid-row: 3;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		margin-top: 10px;
+		gap: 5px;
+		padding: 0 5px;
+		/* Add padding */
+		flex-wrap: wrap;
+		/* Allow wrapping if needed */
+	}
+
+	.instructions-btn,
+	.methodology-btn,
+	.tutorial-btn {
+		margin: 0;
+		max-width: 150px;
+		font-size: 11px;
+		text-wrap: wrap;
+	}
+
+	.tutorial-btn {
+		padding: 5px !important
+	}
+
+	.report-btn {
+		margin: 0;
+		max-width: 150px;
+		font-size: 10px !important;
+		text-wrap: wrap;
+	}
+
+	.tutorial-buttons {
+		padding: 10px 0 0 0;
+		margin-top: 5px;
+	}
+
+	#total-amount {
+		font-size: 17px !important;
+	}
+
+	#dataset-text {
+		font-size: 14px !important;
+	}
+
+	.custom-annotation {
+		font-size: 9px !important;
+	}
+
+	#apexchartsq2we51y7>svg>g.apexcharts-yaxis,
+	#apexchartsq2we51y7>svg>g.apexcharts-inner.apexcharts-graphical>g.apexcharts-bar-series.apexcharts-plot-series>g.apexcharts-datalabels.apexcharts-hidden-element-shown,
+	#apexchartsq2we51y7>svg>g.apexcharts-inner.apexcharts-graphical>g.apexcharts-xaxis>g {
+		transform: scale(0.8) !important;
+	}
+
+	.modal {
+		margin-top: 0 !important;
+		padding-top: 22px !important;
+		margin-bottom: 0 !important;
+		padding-bottom: 15px !important;
+	}
+
+	.modal-header {
+		margin-bottom: 15px;
+		padding-bottom: 0;
+	}
+
+	.modal-header .modal-title {
+		font-size: 17px !important;
+	}
+
+	.modal .modal-content {
+		font-size: 14px !important;
+	}
 }
